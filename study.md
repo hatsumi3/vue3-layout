@@ -39,7 +39,10 @@ v-model は v-bind,v-on を使用した省略形
 
 ```html
 <template>
-  <input :value="bindState" @update="bindState = $event" />
+  <input
+    :value="bindState"
+    @update="bindState = $event"
+  />
 </template>
 ```
 
@@ -90,3 +93,8 @@ message 例
 - `inheritAttrs`
   - デフォルトでは`true`
   - `false`を指定するとルート要素への自動バインドをしない
+
+## teleport タグ
+
+- `to`で指定した HTML 要素かクエリセレクターをもつ要素をターゲットにしてマウント
+- モーダルなど全画面表示が必要な場面で CSS 衝突を防ぎつつ、親コンポーネントの引数を受け付けることが可能
