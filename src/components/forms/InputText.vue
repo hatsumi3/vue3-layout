@@ -25,7 +25,8 @@
 </template>
 
 <script setup lang="ts">
-import { PropType, computed, ref } from 'vue';
+import { PropType, computed } from 'vue';
+import { useFocus } from '../../composables/eventHandler';
 
 const props = defineProps({
   value: { type: String, default: '' },
@@ -49,7 +50,11 @@ const emits = defineEmits<{
   (e: 'update:value', modelValue: string): void;
 }>();
 
-const isFocus = ref(false);
+const { isFocus, handleFocus, handleBlur } = useFocus(
+  { eventName: 'focus' },
+  { eventName: 'blur' }
+);
+
 const handleInput = ({ target }: { target: HTMLInputElement }) => {
   emits('input', target.value);
   emits('update:value', target.value);
@@ -58,14 +63,7 @@ const handleChange = ({ target }: { target: HTMLInputElement }) => {
   emits('change', target.value);
   emits('update:value', target.value);
 };
-const handleFocus = (event: Event) => {
-  isFocus.value = true;
-  emits('focus', event);
-};
-const handleBlur = (event: Event) => {
-  isFocus.value = false;
-  emits('blur', event);
-};
+
 const samllLabelClass = computed(() => {
   return isFocus.value || props.value || props.type === 'date'
     ? 'transition origin-top-left transform scale-75 -translate-y-3'

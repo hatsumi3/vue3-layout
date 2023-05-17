@@ -30,7 +30,8 @@
 </template>
 
 <script setup lang="ts">
-import { PropType, computed, ref } from 'vue';
+import { PropType, computed } from 'vue';
+import { useFocus } from '../../composables/eventHandler';
 
 const props = defineProps({
   value: {
@@ -58,18 +59,13 @@ const emits = defineEmits<{
   ): void;
 }>();
 
-const isFocus = ref(false);
+const { isFocus, handleFocus, handleBlur } = useFocus(
+  { eventName: 'focus' },
+  { eventName: 'blur' }
+);
 const handleChange = () => {
   if (props.disabled) return;
   emits('update:checked', props.value);
-};
-const handleFocus = (event: Event) => {
-  isFocus.value = true;
-  emits('focus', event);
-};
-const handleBlur = (event: Event) => {
-  isFocus.value = false;
-  emits('blur', event);
 };
 const isChecked = computed(() => {
   return props.value === props.checked;
