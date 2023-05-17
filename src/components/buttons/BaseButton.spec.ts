@@ -11,7 +11,7 @@ describe('BaseButton', () => {
     expect(wrapper.html()).toContain('ボタン');
   });
 
-  it('The Click event will be emited', () => {
+  it('The Click event will be emited.', () => {
     // arrange
     const wrapper = mount(BaseButton, {
       slots: {

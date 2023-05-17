@@ -11,7 +11,8 @@
     "lint": "eslint --fix src/*.{ts,vue} && eslint --fix src/**/*.{ts,vue}",
     "format": "prettier -w src/*.{ts,vue} && prettier -w src/**/*.{ts,vue}",
     "fix": "npm run format && npm run lint",
-    "test": "jest"
+    "test": "jest",
+    "test-v": "jest --verbose"
   },
   "dependencies": {
     "axios": "^1.4.0",
