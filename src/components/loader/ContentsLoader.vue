@@ -7,10 +7,12 @@
       <div
         v-if="isOneLine || n >= 1"
         class="relative w-full h-8 mb-2 overflow-hidden bg-gray-100 bg-no-repeat after:transform first:my-2 rounded-5 after:absolute after:inset-0 after:-translate-x-full after:bg-gradient-to-r after:from-gray-100 after:via-gray-200 after:to-gray-100 contents-loader"
+        data-test="long-loader"
       ></div>
       <div
         v-else
         class="relative w-1/2 h-8 mb-2 overflow-hidden bg-gray-100 bg-no-repeat after:transform first:my-2 rounded-5 after:absolute after:inset-0 after:-translate-x-full after:bg-gradient-to-r after:from-gray-100 after:via-gray-200 after:to-gray-100 contents-loader"
+        data-test="half-loader"
       ></div>
     </template>
   </div>
