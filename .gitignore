@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 coverage
+__reports__
 
 # Editor directories and files
 .vscode/*

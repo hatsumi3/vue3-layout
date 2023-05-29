@@ -13,4 +13,14 @@ export default {
   coverageReporters: ['html', 'text-summary'],
   collectCoverageFrom: ['src/**/*.{js,vue}'],
   coverageDirectory: 'coverage/_jest',
+  reporters: [
+    'default',
+    [
+      'jest-html-reporters',
+      {
+        publicPath: '__reports__',
+        filename: 'jest.html',
+      },
+    ],
+  ],
 };
